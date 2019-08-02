@@ -83,3 +83,4 @@ Open two terminals to load the app on native devices or simulators. In the first
 ## License
 
 MIT © [Ovidiu Cherecheș](https://ovidiu.ch)
+
