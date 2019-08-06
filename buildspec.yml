@@ -5,6 +5,7 @@ env:
                 SONAR_VERSION: "4.0.0.1744"
         parameter-store:
                 SONARQUBE_TOKEN: "SonarQubeToken"
+                SONARQUBE_ORG: "SonarQubeOrg"
 phases:
   install:
     commands:
@@ -14,4 +15,4 @@ phases:
         - export PATH=$PATH:./sonar-scanner-${SONAR_VERSION}-linux/bin/
   build:
     commands:
-      - sonar-scanner -D sonar.login=$SONARQUBE_TOKEN 
+      - sonar-scanner -D sonar.login=$SONARQUBE_TOKEN -D sonar.organization=$SONARQUBE_ORG
