@@ -1,0 +1,17 @@
+version: 0.2
+
+env:
+        variables:
+                SONAR_VERSION: "4.0.0.1744"
+        parameter-store:
+                SONARQUBE_TOKEN: "SonarQubeToken"
+phases:
+  install:
+    commands:
+        - sudo apt-get install unzip -y
+        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+        - unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+        - export PATH=$PATH:./sonar-scanner-${SONAR_VERSION}-linux/bin/
+  build:
+    commands:
+      - sonar-scanner -D sonar.login=$SONARQUBE_TOKEN 
