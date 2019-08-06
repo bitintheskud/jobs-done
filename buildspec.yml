@@ -7,12 +7,14 @@ env:
                 SONARQUBE_TOKEN: "SonarQubeToken"
                 SONARQUBE_ORG: "SonarQubeOrg"
 phases:
-  install:
-    commands:
-        - sudo apt-get install unzip -y
-        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_VERSION}-linux.zip
-        - unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip
-        - export PATH=$PATH:./sonar-scanner-${SONAR_VERSION}-linux/bin/
-  build:
-    commands:
-      - sonar-scanner -D sonar.login=$SONARQUBE_TOKEN -D sonar.organization=$SONARQUBE_ORG
+        install:
+                runtimes-version:
+                        nodejs: 10
+                commands:
+                        - sudo apt-get install unzip -y
+                        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+                        - unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+                        - export PATH=$PATH:./sonar-scanner-${SONAR_VERSION}-linux/bin/
+        build:
+                commands:
+                        - sonar-scanner -D sonar.login=$SONARQUBE_TOKEN -D sonar.organization=$SONARQUBE_ORG
